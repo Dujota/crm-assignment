@@ -41,22 +41,34 @@ class Contact
   # 1. which of the contact's attributes you want to update
   # 2. the new value for that attribute
   # and then make the appropriate change to the contact
-  def update
+  def update(atrribute, new_value)
+    # update = all.select{ |contact| contact == self.attribute } #pull the contact that matches the argument and store that new array
+    # update.attribute = value -- need to see if we can make this work
 
+    if attribute == "first_name"
+      self.first_name = value
+    elsif attribute == "last_name"
+      self.last_name = value
+    elsif attribute = "email"
+      self.email = value
+    elsif attribute = "note"
+      self.note = value
+    else
+      p "Sorry the attribute you entered is not found."
+    end
   end
 
   # This method should work similarly to the find method above
   # but it should allow you to search for a contact using attributes other than id by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
   def self.find_by(atrribute, value)
-    all.select { |contact| self.attribute == value}
-
+    all.select { |contact| self.attribute == value}.first
+    #using eg. this equates to where Contact.first_name == 'Betty' and return the first instance on that new array.
   end
 
   # This method should delete all of the contacts
   def self.delete_all
     @@contacts = []
-
   end
 
   def full_name
@@ -66,7 +78,13 @@ class Contact
   # This method should delete the contact
   # HINT: Check the Array class docs for built-in methods that might be useful here
   def delete
-
+    puts "you are about to delete #{full_name}. \n
+    are you sure? please enter : yes or no"
+    yes = gets.chomp.to_s
+    if yes = "yes"
+      all.delete(self)
+    end
+    puts "Done!"
   end
 
   # Feel free to add other methods here, if you need them.

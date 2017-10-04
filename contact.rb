@@ -34,7 +34,7 @@ class Contact
   # This method should accept an id as an argument
   # and return the contact who has that id
   def self.find(id)
-    all.select { |contact| contact.id == id } #need .id to call the reader for id on the instance of contact stored in the array
+    all.select { |contact| self.id == id } #need .id to call the reader for id on the instance of contact stored in the array
   end
 
   # This method should allow you to specify
@@ -46,10 +46,10 @@ class Contact
   end
 
   # This method should work similarly to the find method above
-  # but it should allow you to search for a contact using attributes other than id
-  # by specifying both the name of the attribute and the value
+  # but it should allow you to search for a contact using attributes other than id by specifying both the name of the attribute and the value
   # eg. searching for 'first_name', 'Betty' should return the first contact named Betty
-  def self.find_by
+  def self.find_by(atrribute, value)
+    all.select { |contact| self.attribute == value}
 
   end
 

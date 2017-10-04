@@ -34,7 +34,7 @@ class Contact
   # This method should accept an id as an argument
   # and return the contact who has that id
   def self.find(id)
-    all.select { |contact| self.id == id } #need .id to call the reader for id on the instance of contact stored in the array
+    all.select { |contact| self.id == id }.first #need .id to call the reader for id on the instance of contact stored in the array
   end
 
   # This method should allow you to specify
@@ -49,9 +49,9 @@ class Contact
       self.first_name = value
     elsif attribute == "last_name"
       self.last_name = value
-    elsif attribute = "email"
+    elsif attribute == "email"
       self.email = value
-    elsif attribute = "note"
+    elsif attribute == "note"
       self.note = value
     else
       p "Sorry the attribute you entered is not found."
@@ -81,7 +81,7 @@ class Contact
     puts "you are about to delete #{full_name}. \n
     are you sure? please enter : yes or no"
     yes = gets.chomp.to_s
-    if yes = "yes"
+    if yes == "yes"
       all.delete(self)
     end
     puts "Done!"
@@ -91,10 +91,10 @@ class Contact
 
 end
 
-Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
-# How can I get contact's email?
-# puts contact.email
-# Then how can I change contact's note to 'Loves Pokemon'?
-# puts contact.note
-
-puts Contact.all
+# Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
+# # How can I get contact's email?
+# # puts contact.email
+# # Then how can I change contact's note to 'Loves Pokemon'?
+# # puts contact.note
+#
+# puts Contact.all

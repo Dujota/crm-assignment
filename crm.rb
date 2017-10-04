@@ -57,15 +57,15 @@ class CRM
 
   def modify_existing_contact
     #first we need to get the inputs from the user so we know what to pass into the find class method.
-    print "Please enter the ID# of the contact you want to update: "
+    print "Please enter the ID# of the contact you want to update: \n"
     id = gets.chomp.to_i
 
     #once we know the ID value, we then need t know which attribute we want to pass into update method -- see method in contact.rb
-    print "What aspect(field) of the contact would you like to change?"
+    print "What aspect(field) of the contact would you like to change? \n"
     attribute = gets.chomp.to_s
 
     #now that we have the attribute and id saved in variables, we need the final piece which will be the new value for the attribute, we are also passing this variable to the update method
-    print "We will change #{attribute}. Please enter the new value: "
+    print "We will change #{attribute}. Please enter the new value: \n"
     value = gets.chomp.to_s
 
     #now that we have all the info stored in variables, we can start using the mehtods
@@ -74,14 +74,27 @@ class CRM
   end
 
   def delete_contact
-
+    print "Enter the ID of the contact you wish to delete: \n"
+    delete_id = gets.chomp.to_i
+    contact = Contact.find(delete_id)
+    contact.delete
   end
 
   def display_all_contacts
-
+    print "Below is a list of all the contacts in storage at the moment: \n"
+    Contact.all
   end
 
   def search_by_attribute
+    print "Please enter the field/attribute you would like to search? \n"
+    print "Choose from: first_name, last_name, email, note"
+    attribute = gets.chomp.to_s
+
+    print "Now we need the value of the attribute/field: \n"
+    value = gets.chomp.to_s
+
+    puts Contact.find_by(attribute, value).inspect
+
 
   end
 

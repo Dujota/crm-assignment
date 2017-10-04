@@ -28,13 +28,15 @@ class Contact
 
   # This method should return all of the existing contacts
   def self.all
-    @@contacts
+    @@contacts.inspect
   end
 
   # This method should accept an id as an argument
   # and return the contact who has that id
   def self.find(id)
     all.select { |contact| self.id == id }.first #need .id to call the reader for id on the instance of contact stored in the array
+
+    #  all.find { |contact| contact.id == id } alternate method
   end
 
   # This method should allow you to specify
@@ -56,6 +58,8 @@ class Contact
     else
       p "Sorry the attribute you entered is not found."
     end
+
+    # send("#{attribute}=", new_value)
   end
 
   # This method should work similarly to the find method above
@@ -64,6 +68,8 @@ class Contact
   def self.find_by(atrribute, value)
     all.select { |contact| self.attribute == value}.first
     #using eg. this equates to where Contact.first_name == 'Betty' and return the first instance on that new array.
+
+    # all.find { |contact| contact.send(attribute) == value } Alternate method that is a short hand
   end
 
   # This method should delete all of the contacts
@@ -88,13 +94,4 @@ class Contact
   end
 
   # Feel free to add other methods here, if you need them.
-
 end
-
-# Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
-# # How can I get contact's email?
-# # puts contact.email
-# # Then how can I change contact's note to 'Loves Pokemon'?
-# # puts contact.note
-#
-# puts Contact.all

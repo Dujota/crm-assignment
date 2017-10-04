@@ -1,7 +1,13 @@
 class CRM
 
-  def initialize
+  attr_accessor :name
 
+  def initialize(name)
+    @name = name
+  end
+
+  def name_of_app
+    "This application is called " + @name
   end
 
 #given to us in the exercise - basically always has the main menu running
@@ -94,9 +100,15 @@ class CRM
     value = gets.chomp.to_s
 
     puts Contact.find_by(attribute, value).inspect
-
-
   end
-
-
 end
+
+
+contact1 = Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
+contact2 = Contact.create('Alfonso', 'Rubel', 'alnfonso@mail.com', 'cooks a lot')
+contact3 = Contact.create('Mauricio', 'Nadal', 'nadal@mail.com', 'plays soccer')
+contact4 = Contact.create('Meliza', 'Pineda', 'meliza@mail.com', 'cleans a lot')
+
+test = CRM.new
+
+test.main_menu

@@ -48,16 +48,16 @@ class CRM
 
 #this is where we get the values for the contact class initializer we then pass in the values stored in the local variables into the contact.create function
   def add_new_contact
-    print 'Please enter First Name: '
+    print "Please enter First Name: "
     first_name = gets.chomp.to_s
 
-    print 'Please enter Last Name: '
+    print "Please enter Last Name: "
     last_name = gets.chomp.to_s
 
-    print 'Please enter your Email address: '
+    print "Please enter your Email address: "
     email = gets.chomp.to_s
 
-    print 'Please enter a Note'
+    print "Please enter a Note: "
     note = gets.chomp.to_s
 
     Contact.create(first_name, last_name, email, note)
@@ -69,7 +69,7 @@ class CRM
     id = gets.chomp.to_i
 
     #once we know the ID value, we then need t know which attribute we want to pass into update method -- see method in contact.rb
-    print "What aspect(field) of the contact would you like to change? \n"
+    print "What aspect(field) of the contact would you like to change?: \n"
     attribute = gets.chomp.to_s
 
     #now that we have the attribute and id saved in variables, we need the final piece which will be the new value for the attribute, we are also passing this variable to the update method
@@ -78,7 +78,7 @@ class CRM
 
     #now that we have all the info stored in variables, we can start using the mehtods
     contact = Contact.find(id)
-    contact.udpate(attribute, value) # pulling method from contact file
+    contact.update(attribute, value) # pulling method from contact file
   end
 
   def delete_contact
@@ -90,12 +90,13 @@ class CRM
 
   def display_all_contacts
     print "Below is a list of all the contacts in storage at the moment: \n"
-    Contact.all
+    Contact.all.each { |contact| puts contact.inspect}
+    puts
   end
 
   def search_by_attribute
     print "Please enter the field/attribute you would like to search? \n"
-    print "Choose from: first_name, last_name, email, note"
+    print "Choose from: first_name, last_name, email, note: \n"
     attribute = gets.chomp.to_s
 
     print "Now we need the value of the attribute/field: \n"
@@ -106,10 +107,10 @@ class CRM
 end
 
 
-contact1 = Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
-contact2 = Contact.create('Alfonso', 'Rubel', 'alnfonso@mail.com', 'cooks a lot')
-contact3 = Contact.create('Mauricio', 'Nadal', 'nadal@mail.com', 'plays soccer')
-contact4 = Contact.create('Meliza', 'Pineda', 'meliza@mail.com', 'cleans a lot')
+# contact1 = Contact.create('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
+# contact2 = Contact.create('Alfonso', 'Rubel', 'alnfonso@mail.com', 'cooks a lot')
+# contact3 = Contact.create('Mauricio', 'Nadal', 'nadal@mail.com', 'plays soccer')
+# contact4 = Contact.create('Meliza', 'Pineda', 'meliza@mail.com', 'cleans a lot')
 
 a_crm_app = CRM.new("This is my first CRM Assigment")
 a_crm_app.main_menu

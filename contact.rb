@@ -64,3 +64,7 @@ class Contact
 end
 
 contact = Contact.new('Betty', 'Maker', 'bettymakes@gmail.com', 'Loves Pokemon')
+# How can I get contact's email?
+contact.email
+# Then how can I change contact's note to 'Loves Pokemon'?
+contact.note

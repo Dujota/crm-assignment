@@ -1,3 +1,5 @@
+require_relative 'contact'
+
 class CRM
 
   attr_accessor :name
@@ -109,6 +111,6 @@ contact2 = Contact.create('Alfonso', 'Rubel', 'alnfonso@mail.com', 'cooks a lot'
 contact3 = Contact.create('Mauricio', 'Nadal', 'nadal@mail.com', 'plays soccer')
 contact4 = Contact.create('Meliza', 'Pineda', 'meliza@mail.com', 'cleans a lot')
 
-test = CRM.new
-
-test.main_menu
+a_crm_app = CRM.new("This is my first CRM Assigment")
+a_crm_app.main_menu
+a_crm_app.print_main_menu
